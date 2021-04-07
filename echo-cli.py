@@ -26,9 +26,8 @@ def prompt():
             elif message[0] == '\\':
                 parsed = parse_command(message)
                 output = json.dumps(parsed, indent=2)
-                print(output)
 
-            #ssock.sendall(bytes(output, 'utf-8'))
+            ssock.sendall(bytes(output, 'utf-8'))
 
 def parse_command(command):
     # Remove backslash prefix and split on spaces
