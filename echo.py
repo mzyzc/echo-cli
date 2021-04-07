@@ -5,6 +5,7 @@ import ssl
 import json
 
 HOSTNAME = 'czyz.xyz'
+PORT = 63100
 CONTEXT = ssl.create_default_context()
 
 def prompt():
@@ -63,7 +64,7 @@ def parse_command(command):
     }
 
 
-with socket.create_connection((HOSTNAME, 63100)) as sock:
+with socket.create_connection((HOSTNAME, PORT)) as sock:
     with CONTEXT.wrap_socket(sock, server_hostname=HOSTNAME) as ssock:
         print(ssock.version())
         prompt()
