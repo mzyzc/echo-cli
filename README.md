@@ -6,7 +6,7 @@ It was originally created for debugging purposes so it does not currently includ
 
 ## Usage
 
-All commands are prefixed with a backslash (\). To check usage when running the program, use the `\help` command.
+All commands are prefixed with a backslash (`\`). To check usage when running the program, use the `\help` command.
 
 Commands follow this pattern, where words in ALL CAPS are variable:
 
