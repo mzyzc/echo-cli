@@ -10,24 +10,27 @@ CONTEXT = ssl.create_default_context()
 
 def prompt():
         while True:
-            message = input('echo> ')
+            try:
+                message = input('echo> ')
 
-            # Blank inputs close the connection
-            if len(message) == 0:
-                break;
-            # Help messages
-            elif message == '\\help':
-                print("""\FUNCTION TARGET
-                 user:ID,EMAIL,NAME,PASSWORD,PUBLICKEY
-                 message:ID,DATA,MEDIATYPE,TIMESTAMP,SIGNATURE,SENDER
-                 conversation:ID,NAME
-                """)
-            # Inputs that start with \ are commands
-            elif message[0] == '\\':
-                parsed = parse_command(message)
-                output = json.dumps(parsed, indent=2)
+                # Blank inputs close the connection
+                if len(message) == 0:
+                    break;
+                # Help messages
+                elif message == '\\help':
+                    print("""\FUNCTION TARGET
+                     user:ID,EMAIL,NAME,PASSWORD,PUBLICKEY
+                     message:ID,DATA,MEDIATYPE,TIMESTAMP,SIGNATURE,SENDER
+                     conversation:ID,NAME
+                    """)
+                # Inputs that start with \ are commands
+                elif message[0] == '\\':
+                    parsed = parse_command(message)
+                    output = json.dumps(parsed, indent=2)
 
-            ssock.sendall(bytes(output, 'utf-8'))
+                ssock.sendall(bytes(output, 'utf-8'))
+            except Exception as e:
+                print(e)
 
 def parse_command(command):
     # Remove backslash prefix and split on spaces
@@ -55,8 +58,7 @@ def parse_command(command):
             conversations.append(d)
 
     return {
-        'function': function,
-        'target': target,
+        'function': f'{function} {target}',
         'users': users,
         'messages': messages,
         'conversations': conversations,
