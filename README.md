@@ -12,7 +12,7 @@ Commands follow this pattern, where words in ALL CAPS are variable:
 
 ```
 \FUNCTION TARGET users:ID,EMAIL,NAME,PASSWORD,PUBLIC_KEY
-                 messages:ID,DATA,MEDIA_TYPE,TIMESTAMP,SIGNATURE,SENDER
+                 messages:ID,DATA,MEDIA_TYPE,TIMESTAMP,SIGNATURE
                  conversations:ID,NAME
 ```
 
@@ -54,9 +54,9 @@ To log-in with an existing user:
 
 `\verify users user:,me@example.com,,p@$$w0rd,`
 
-To start a conversation with three existing users:
+To start a conversation with yourself and two other users:
 
-`\create conversations conversation:,ConversationName user:,me@example.com,,, user:,you@example.com,,, user:,who@example.com,,,`
+`\create conversations conversation:,ConversationName user:,you@example.com,,, user:,who@example.com,,,`
 
 To list all existing conversations:
 
@@ -64,7 +64,7 @@ To list all existing conversations:
 
 To send one message in a conversation (more messages can be sent with multiple `message:` arguments):
 
-`\create messages message:,dGhpcyBpcyBhIG1lc3NhZ2U=,dGV4dC9wbGFpbg==,MjAxNC0wMi0xNVQwODo1Nzo0Ny44MTI=,cHJldGVuZCB0aGlzIGlzIGEgdmFsaWQgc2lnbmF0dXJl,me@example.com conversation:1,`
+`\create messages message:,dGhpcyBpcyBhIG1lc3NhZ2U=,dGV4dC9wbGFpbg==,MjAxNC0wMi0xNVQwODo1Nzo0Ny44MTI=,cHJldGVuZCB0aGlzIGlzIGEgdmFsaWQgc2lnbmF0dXJl conversation:1,`
 
 To list all messages in a conversation:
 
